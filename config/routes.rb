@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   
-  resources :items,only: [:new]
+  resources :items,only: [:new,:show]
+  resources :ownerships, only: [:create, :destroy]
   
 end
 
@@ -20,3 +21,6 @@ end
   #8: /login へアクセスされたときには、sessions#newアクションを行う。
   #9: /login で投稿された場合は、sessions#createアクションを行う。
   #10: /logoutでdeleteが行われたときには、sessions#destroyアクションを行う。
+  
+  #12: items :new 検索画面　:show 商品の詳細ページ
+  #13: ownership :create want/have登録　:destroy 抹消
